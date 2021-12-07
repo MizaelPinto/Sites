@@ -1,0 +1,246 @@
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+.navbar-brand{
+	font-size: 2rem;
+	color: black;
+	font-family: 'Noto Sans', sans-serif;
+}
+.navbar-brand:hover{
+	color: black;
+}
+.nav-link{
+	margin-right: 10px;
+	margin-left: 10px;
+	color: black;
+	text-transform: uppercase;
+	font-family: 'Oswald', sans-serif;
+}
+.nav-link:hover{
+	color: black;
+}
+.search{
+ height: 40px;
+ width: 80%;
+ border-radius: 60px;
+ outline: none;
+ margin-right: -35px;
+ border: 2 px solid rgb(15, 11, 80);	
+ font-family: 'Oswald', sans-serif;
+}
+.btn0{
+	height: 40px;
+	width: 40%;
+	outline:none;
+	background: rgb(15, 11, 80);	
+	color: white;
+	font-weight: 700;
+	border-radius: 60px;	
+}
+.main{
+	background: url(img/img05.jpg)no-repeat;
+	background-size: cover;
+	height: 60vh;
+	background-position: 50% 50%;
+	width: 100%;
+}
+.main h1{
+	font-size: 4rem;
+	font-weight: 600;
+	font-family: 'Lato', sans-serif;
+	color: white;
+}
+.btn1{
+	height: 45px;
+	width: 35%;
+	border: none;
+	outline:none ;
+	background-color: rgb(15, 11, 80);
+	color: white;
+	font-weight: 700;
+	border-radius: 60px;
+}
+.btn1:hover{
+	background-color: rgb(15, 11, 55);
+	transition: 0,5s;
+}
+h1{
+	 font-weight: 700;
+}
+.card:hover{
+	box-shadow: 5px 5px 18px 5px rgba(0,0,0,0.25);
+-webkit-box-shadow: 5px 5px 18px 5px rgba(0,0,0,0.25);
+-moz-box-shadow: 5px 5px 18px 5px rgba(0,0,0,0.25);
+transition: 0.5s;
+}
+.apple{
+	background: url(img/img04.jpg)no-repeat ;
+	background-size: cover;
+	height: 55vh;
+	width: 100%;
+}
+.apple h1{
+		font-family: 'Noto Sans', sans-serif;
+}
+/*footer*/
+
+.containe{
+	max-width: 1170px;
+	margin:auto;
+
+}
+.rowl{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
+.footer{
+	background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #ffffff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #e91e63;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255,255,255,0.2);
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/*responsive*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+.footer-col p {
+	color: #fff;
+
+}
+/**produtos aba**/
+.have h1{
+		font-family: 'Lato', sans-serif;
+}
+/**Selecionar**/
+.page{
+	margin: 0 auto 80px;
+	text-align: center;
+}
+.page span{
+	display: inline-block;
+	border: 2px solid #1C316F;
+	margin-left: 10px;
+	width: 40px;
+	height: 40px;
+	text-align: center;
+	line-height: 40px;
+	cursor: pointer;
+
+}
+.page span:hover{
+	background:#12192E ;
+	color: #fff;
+}
+/**Containers do faceproduto**/
+.lol{
+	text-align: right;
+		font-family: 'Noto Sans', sans-serif;
+ 		text-decoration: none;
+ 		color: black;
+}
+.btn2{
+	height: 35px;
+	width: 15%;
+	border: none;
+	outline:none ;
+	background-color: rgb(15, 11, 80);
+	color: white;
+	font-weight: 600;
+	border-radius: 60px;
+}
+.btn2:hover{
+	background-color: rgb(15, 11, 55);
+	transition: 0,5s;
+}
+div.container01{
+			width: 49%;
+			min-width: 250px;
+			display: inline-block;
+			vertical-align: top;
+
+		}
+		.pov{
+			text-align: left;
+			font-family: 'Noto Sans', sans-serif;      
+			font-size: 30px;
+        color: #121258;
+        padding: 40px;
+		}
+		.pov02{
+			text-align: left;
+			font-family: 'Lato', sans-serif;          
+			font-size: 20px;
+        color: black;
+        padding: 30px;
+        padding-top: 50px;
+		}
+.container02{
+	background-color: #F9F9FA;
+}

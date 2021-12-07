@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+ <title>PowerGym</title>
+ <link rel="shortcut icon"href="img/imglogo.png" >
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Noto+Sans&family=Oswald:wght@500&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/0dfe31ab68.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  </head>
+<script type="text/javascript">
+  (function(){
+    window.onload = function() {
+        $form = document.getElementsByTagName('form')[0];
+        var $limpar = document.getElementById('limpar');
+        var $mostar_condicao_fisica = document.forms['calculo_imc'].mostar_condicao_fisica;
+
+        $form.addEventListener("submit", mostrarIMC);          
+        $mostar_condicao_fisica.addEventListener('change', mostrarIMC)
+                
+        $limpar.addEventListener('click', function(){
+            var $mostra_imc = document.getElementById("mostrar_imc");
+            $mostra_imc.textContent = '';
+        });
+    }
+
+    function calcularImc(peso, altura) {
+        var imc = peso / (altura * altura);
+        return imc;
+    }
+
+    function classificarImc(imc) {
+        var classificao 
+        if (imc <= 18.5) {
+            classificao = "abaixo do peso";
+        }
+        else if (imc >= 18.6 && imc < 25) {
+            classificao = "no peso Ideal";
+        }
+        else if (imc >= 25 && imc < 30) {
+            classificao = "levemente acima do peso";
+        }
+        else if (imc >= 30 && imc < 35) {
+            classificao = "com obesidade grau I";
+        }
+        else if (imc >= 35 && imc < 40) {
+            classificao = "com obesidade grau II";
+        }
+        else if (imc >= 40) {
+            classificao = "com obesidade grau III";
+        }
+        return classificao;
+    }
+
+    function mostrarIMC(event) {    
+        event.preventDefault();
+        
+        var $nome = document.forms['calculo_imc'].nome;
+        var $peso = document.forms['calculo_imc'].peso;
+        var $altura = document.forms['calculo_imc'].altura;
+        var $mostrar_nome = document.forms['calculo_imc'].mostrar_nome;
+        var $mostra_imc = document.getElementById("mostrar_imc");    
+        
+        var imc = calcularImc($peso.value, $altura.value).toFixed(2);
+        
+        if($nome.value != '' && $peso.value != '' && $altura.value != '' && $form.checkValidity()) {
+        
+            if ($mostrar_nome.value == 0 && mostar_condicao_fisica.value == 0)
+                $mostra_imc.textContent = $nome.value + ", seu IMC é " +imc+", você está "+classificarImc(imc)+".";       
+            
+            else if($mostrar_nome.value == 1 && mostar_condicao_fisica.value == 0) 
+                $mostra_imc.textContent = "Seu IMC é " +imc+", você está "+classificarImc(imc)+".";
+            
+            else if ($mostrar_nome.value == 0 && mostar_condicao_fisica.value == 1)
+                $mostra_imc.textContent = $nome.value + ", seu IMC é " +imc;
+            
+            else if($mostrar_nome.value == 1 && mostar_condicao_fisica.value == 1) 
+                $mostra_imc.textContent = "Seu IMC é " +imc;
+        }                    
+    }
+})();
+</script>
+<style type="text/css">
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield;
+}
+</style>
+<body>
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark" aria-label="Fourth navbar example">
+    <div class="container">
+      <a class="navbar-brand" href="#"><img src="img/imglogo.png" height="150px"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample04">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="loja.html">Loja</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="sobre.html">Sobre</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="patrono.html">Seja um Patrono</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="parceiros.html">Parceiros</a>
+          </li>
+           <li class="nav-item">
+            <a class="nav-link" href="Cadastro.html">Cadastro</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Outros</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown04">
+              <li><a class="dropdown-item" href="video02.html">Videos</a></li>
+              <li><a class="dropdown-item" href="FAQ.html">FAQ</a></li>
+              <li><a class="dropdown-item" href="ttabela.html">Tabela</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>  
+<section class="main">
+  <div class="container py-5">
+    <div class="row py-5">
+      <div class="col-lg-7 pt-5 text-center">
+        <h1 class="pt-5 ">Os Melhores Suplementos Tu Encontras Na PowerGym</h1>
+        <a href="loja.html"><button class="btn1 mt-3">Explore Agora!</button></a>
+      </div>
+    </div>
+  </div>  
+</section>
+
+<!-------------------------------------------Seção------------------------------------------------->
+<section class="new">
+  <div class="container py-5">
+    <div class="row pt-5">
+        <div class="col-lg-7 m-auto">
+          <div class="row text-center">
+            <div class="col-lg-4">
+              <img src="img/cam.png">
+              <h6>ENTREGA PARA TODO BRASIL</h6>
+            </div>
+            <div class="col-lg-4">
+              <img src="img/card.png">
+              <h6>COMPRA 100% SEGURA</h6>
+            </div>
+            <div class="col-lg-4">
+              <img src="img/cof.png">
+              <h6>ACEITAMOS TODOS OS CARTÕES</h6>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+<!--Mais comprados-->
+<section class="product">
+  <div class="container py-5">
+    <div class="row py-5 ">
+      <div class="col-lg-5 m-auto text-center">
+        <h1>O Mais Vendidos</h1>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface01.html"><img src="img/produtos/produto01.png" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>(TOP) WHEY PROTEIN CONCENTRADO (1KG)</h6>
+        <p>R$80,10 (Cada)</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface07.html"><img src="img/produtos/produto07.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>(CREATINA (250g) Creapure®)</h6>
+        <p>R$44,99</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface09.html"><img src="img/produtos/produto09.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>BCAA (10:1:1)</h6>
+        <p>R$50,40</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface04.html"><img src="img/produtos/produto04.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>3W WHEY PROTEIN (1KG)</h6>
+        <p>R$117,00</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-6 text-center m-auto">
+        <a href="loja.html"><button class="btn1">Veja Mais</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Sobre-nós-->
+<section class="about">
+  <div class="container py-5">
+    <div class="row py-4">
+      <div class="col-lg-8 m-auto text-center">
+        <h1>Bem-vindo a Melhor Loja de Suplementos de Brasília</h1>
+        
+      </div>
+      </div>
+      <div class="row" >
+        <div class="col-lg-4" >
+          <img src="img/cap01.jpg" class="img-fluid mb-3"  alt="">
+          <h5>Desempenho</h5>
+          <p>os suplementos da gym, oferecem desempenho.</p>
+        </div>
+        <div class="col-lg-4">
+          <img src="img/cap02.jpg" class="img-fluid mb-3"  alt="">
+          <h5>Energia</h5>
+          <p>os suplementos da gym, oferecem Energia para seu treino de Cardio.</p>
+        </div>
+        <div class="col-lg-4">
+          <img src="img/cap03.jpg" class="img-fluid mb-3" alt="">
+          <h5>Força</h5>
+          <p>os suplementos da gym, proporcionam mais força para seus musculos. </p>
+        </div>     
+    </div>
+    <div class="row pt-3">
+      <div class="col-lg-6 text-center m-auto">
+        <a href="loja.html"></a><button class="btn1">Produtos</button></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Explore nossa loja-->
+<section class="shop">
+  <div class="container">
+    <div class="row py-4">
+      <div class="col-lg-8 m-auto text-center">
+        <h1>Explore a Nossa Loja</h1>
+      </div>
+      </div>
+      <div class="row">
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface01.html"><img src="img/produtos/produto01.png" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>(TOP) WHEY PROTEIN CONCENTRADO (1KG)</h6>
+        <p>R$80,10 (Cada)</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface17.html"><img src="img/produtos/produto17.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>Energético Ultra Zero sabor Tropical (269Ml)</h6>
+        <p>R$ 7,83</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface13.html"><img src="img/produtos/produto13.png" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>BARRA CRISP PROTEIN BAR SABOR MARSHMALLOW CAIXA</h6>
+        <p>R$50,40 </p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface10.html"><img src="img/produtos/produto10.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>BARRA DE PROTEÍNA COM RECHEIO BARRINHA</h6>
+        <p>R$3,60(Cada)</p>
+      </div>
+      <div class="row">
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface08.html"><img src="img/produtos/produto08.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>L-GLUTAMINA (250G)</h6>
+        <p>R$45,00 (Cada)</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface02.html"><img src="img/produtos/produto02.png" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>(TOP) WHEY PROTEIN ISOLADO (1KG) </h6>
+        <p>R$144,00 (Cada)</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface06.html"><img src="img/produtos/produto06.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>MEDIUM WHEY PROTEIN (1KG)</h6>
+        <p>R$56,61(Cada)</p>
+      </div>
+      <div class="col-lg-3 text-center">
+        <div class="card mb-2">
+          <div class="card-body">
+            <a href="produtoface04.html"><img src="img/produtos/produto04.jpg" class="img-fluid"></a>
+          </div>
+        </div>
+        <h6>3W WHEY PROTEIN  (1KG)</h6>
+        <p>R$117,00 (Cada)</p>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+<!--Banner-->
+<section class="apple py-5">
+  <div class="container text-white py-5">
+      <div class="row py-5">
+          <div class="col-lg-6">
+              <h1 class="font-weight-bold py-3">Destrave seu pontecial com nossos suplementos</h1>
+              <h6>Sempre treine duro</h6>
+              <a href="sobre.html"><button class="btn1  mt-3">Explore Mais </button></a>
+          </div>
+      </div>   
+  </div>  
+</section>
+<!--Contact-->
+ <main>
+            <div class="container">
+                <h1 class="py-4 text-center">Cálculo o Teu  IMC</h1>
+                <form name="calculo_imc">
+                    <div class="row">
+        
+                        <div class="form-group col-lg-4 col-md-6">
+                            <label for="nome">Nome</label>
+                            <input class="form-control" placeholder="Ex: João Silva" type="text" name="nome" id="nome" required="required">  
+                        </div>
+
+                        <div class="form-group col-lg-4 col-md-6">
+                            <label for="peso">Peso</label>
+                            <div class="input-group">
+                                <input placeholder="Ex: 80" class="form-control" type="number" step="0.01" min="0,01" max="600" name="peso" id="peso" required="required">
+                                <span class="input-group-addon">Kg</span>
+                            </div>
+                        </div>                
+
+                        <div class="form-group col-lg-4 col-md-6">
+                            <label for="altura">Altura</label>
+                            <div class="input-group">
+                                <input placeholder="Ex: 1,75" class="form-control" type="number" step="0.01" min="0,01" max="3" name="altura" id="altura" required="required">
+                                <span class="input-group-addon">m</span>
+                            </div>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-4 col-md-6">
+                            <label for="mostrar_nome">Mostrar nome</label>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" name="mostrar_nome" id="mostrar_nome" class="form-check-input" value="0" checked>
+                                    Sim
+                                </label>
+                            </div>
+
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" name="mostrar_nome" id="mostrar_nome" class="form-check-input" value="1">
+                                    Não
+                                </label>
+                            </div>                            
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6">
+                            <label for="mostar_condicao_fisica">Mostrar condição física</label>
+                            <select name="mostar_condicao_fisica" id="mostar_condicao_fisica" class="form-control">
+                                <option selected value="0">Sim</option>
+                                <option value="1">Não</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <input style="cursor:pointer;" class="btn btn-primary" name="calcular_imc" id="calcular_imc" type="submit" value="Calcular IMC">
+                    <input id="limpar" style="cursor:pointer;" class="btn btn-secondary" type="reset" value="Limpar">
+
+                </form>
+                
+                <p class="my-4 h5" id="mostrar_imc"></p>
+            </div>
+        </main>
+<!-----------footer---------------->
+<footer class="footer">
+     <div class="containe">
+      <div class="rowl">
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="sobre.html">Contatos</a></li>
+              <li><a href="ttabela.html">Nossa Tabela</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Ajuda</h4>
+          <ul>
+            <a href="FAQ.html"><li>FAQ</a></li>
+            <li><a href="patrono.html">Filiação Programa</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Online shop</h4>
+          <ul>
+            <li><a href="index.html">Voltar ao ínicio</a></li>
+            <li><a href="loja.html">Produtos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Siga a gente</h4>
+          <div class="social-links">
+            <a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.youtube.com//"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.reddit.com//"><i class="fab fa-reddit"></i></a>
+          </div>
+        </div>
+      </div>
+     </div>
+ 
+  </footer>
+  <footer><center><h6>Criado por Poliana Ferreira/Mizael de lima pinto-2021</h6></center></footer>
+<!--Js-parte-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+  </body>
+</html>
